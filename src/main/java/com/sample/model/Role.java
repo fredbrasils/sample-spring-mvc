@@ -8,7 +8,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "role")
 @AttributeOverride(name = "id", column = @Column(name = "role_id",  
-				   nullable = false, columnDefinition = "BIGINT UNSIGNED")) 
+				   nullable = false, columnDefinition = "BIGINT")) 
 public class Role extends BaseModelAudit{
 
 	private static final long serialVersionUID = 1L;

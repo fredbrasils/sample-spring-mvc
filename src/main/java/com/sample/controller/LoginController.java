@@ -23,7 +23,16 @@ public class LoginController {
 	@RequestMapping(value = { "/", "/login" }, method = RequestMethod.GET)
 	public ModelAndView login() {
 		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.setViewName("login");
+		User user = newUser();
+		User userExists = userService.findUserByEmail(user.getEmail());
+		if (userExists == null) {
+			userService.save(user);
+			//modelAndView.addObject("successMessage", "User has been registered successfully");
+			modelAndView.addObject("user", user);
+			modelAndView.setViewName("welcome");			
+		}else {
+			modelAndView.setViewName("login");			
+		}
 		return modelAndView;
 	}
 
@@ -66,6 +75,15 @@ public class LoginController {
 		modelAndView.addObject("adminMessage", "Content Available Only for Users with Admin Role");
 		modelAndView.setViewName("admin/home");
 		return modelAndView;
+	}
+	
+	public User newUser() {
+		User user = new User();
+		user.setEmail("fredbrasils@hotmail.com");
+		user.setName("Fred");
+		user.setLastName("Santos");
+		user.setPassword("1234");
+		return user;
 	}
 
 }

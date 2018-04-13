@@ -37,6 +37,11 @@ public class UserServiceImpl extends BaseServiceImpl<User> implements UserServic
 		user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
 		user.setActive(1);
 		Role userRole = roleRepository.findByRole("ADMIN");
+		if(userRole == null) {
+			userRole = new Role();
+			userRole.setRole("ADMIN");
+			roleRepository.save(userRole);
+		}
 		user.setRoles(new HashSet<Role>(Arrays.asList(userRole)));
 		userRepository.save(user);
 	}	

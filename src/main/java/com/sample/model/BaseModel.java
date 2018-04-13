@@ -22,7 +22,7 @@ public abstract class BaseModel implements Serializable {
     @Id  
     @GeneratedValue(strategy = GenerationType.IDENTITY)  
     @Basic(optional = false)  
-    @Column(name = "id", nullable = false, columnDefinition = "BIGINT UNSIGNED")  
+    @Column(name = "id", nullable = false, columnDefinition = "BIGINT")  
     protected Long id;  
   
     public Long getId() {  

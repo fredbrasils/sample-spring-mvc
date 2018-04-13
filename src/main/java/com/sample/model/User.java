@@ -19,7 +19,7 @@ import org.hibernate.validator.constraints.Length;
 @Entity
 @Table(name = "user")
 @AttributeOverride(name = "id", column = @Column(name = "user_id",  
-				   nullable = false, columnDefinition = "BIGINT UNSIGNED"))  
+				   nullable = false, columnDefinition = "BIGINT"))  
 public class User extends BaseModelAudit{
 
 	private static final long serialVersionUID = 1L;
